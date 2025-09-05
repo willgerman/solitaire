@@ -2,19 +2,119 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon"
-        type="image/svg+xml"
-        href="/vite.svg" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Solitaire</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+      <link rel="icon"
+            type="image/svg+xml"
+            href="/vite.svg" />
+
+      <link rel="stylesheet"
+            href="./src/interface/main.scss">
+
+      <link rel="stylesheet"
+            href="./src/interface/main.css">
+
+      <script src="https://kit.fontawesome.com/eeb9e14796.js"
+              crossorigin="anonymous"></script>
+
+      <link rel="preconnect"
+            href="https://fonts.googleapis.com">
+      <link rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet">
+
+      <title>Solitaire</title>
 </head>
 
-<body>
-  <div id="app"></div>
-  <script type="module"
-          src="/src/main.js"></script>
+<body class="flex--row--align-center--justify-center">
+      <div id="app"
+           class="solitaire game">
+
+            <header class="topbar flex--row--align-center--justify-center">
+                  <div id="time"
+                       class="topbar__item flex--row--align--center--justify-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="counter">
+                              00:00
+                        </span>
+                  </div>
+                  <div id="score"
+                       class="topbar__item flex--row--align--center--justify-center">
+                        <span>Score</span>
+                        <span class="counter">
+                              0
+                        </span>
+                  </div>
+                  <div id="moves"
+                       class="topbar__item flex--row--align--center--justify-center">
+                        <span>Moves</span>
+                        <span class="counter">
+                              0
+                        </span>
+                  </div>
+            </header>
+
+            <main class="board grid">
+                  <div class="flex">
+                        <div class="deck grid">
+                              <!-- <wg-stock></wg-stock> -->
+                              <div id="stock"
+                                   class="stock grid">
+                              </div>
+                              <!-- <wg-talon></wg-talon> -->
+                              <div id="talon"
+                                   class="talon grid">
+
+                              </div>
+                        </div>
+                        <div class="foundations grid">
+                              <!-- <wg-foundations-list></wg-foundations-list> -->
+                              <div id="hearts"
+                                   class="foundations__list grid">
+                              </div>
+                              <!-- <wg-foundations-list></wg-foundations-list> -->
+                              <div id="diamonds"
+                                   class="foundations__list grid">
+                              </div>
+                              <!-- <wg-foundations-list></wg-foundations-list> -->
+                              <div id="clubs"
+                                   class="foundations__list grid">
+                              </div>
+                              <!-- <wg-foundations-list></wg-foundations-list> -->
+                              <div id="spades"
+                                   class="foundations__list grid">
+                              </div>
+                        </div>
+                  </div>
+                  <div class="tableau grid">
+                        <!-- <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list>
+                        <wg-tableau-list></wg-tableau-list> -->
+                  </div>
+            </main>
+
+            <aside class="sidebar flex--row--align-center--justify-center">
+                  <button class="sidebar__control flex--row--align-center--justify-center sidebar__control--undo">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        Undo
+                  </button>
+                  <button class="sidebar__control flex--row--align-center--justify-center sidebar__control--new">
+                        <i class="fa-solid fa-rocket"></i>
+                        New
+                  </button>
+            </aside>
+
+      </div>
+      <script type="module"
+              src="/src/main.js"></script>
 </body>
 
 </html>

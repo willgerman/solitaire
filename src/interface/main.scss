@@ -1,0 +1,1043 @@
+@use "sass:map";
+
+// ======================================== //
+
+// #region Abstracts
+
+// ---------------------------------------- //
+
+// #region Colors
+
+// Primitive Tokens
+
+$_purple-vivid-050: #F2EBFE;
+$_purple-vivid-100: #DAC4FF;
+$_purple-vivid-200: #B990FF;
+$_purple-vivid-300: #A368FC;
+$_purple-vivid-400: #9446ED;
+$_purple-vivid-500: #8719E0;
+$_purple-vivid-600: #7A0ECC;
+$_purple-vivid-700: #690CB0;
+$_purple-vivid-800: #580A94;
+$_purple-vivid-900: #44056E;
+
+$_blue-gray-050: #F0F4F8;
+$_blue-gray-100: #D9E2EC;
+$_blue-gray-200: #BCCCDC;
+$_blue-gray-300: #9FB3C8;
+$_blue-gray-400: #829AB1;
+$_blue-gray-500: #627D98;
+$_blue-gray-600: #486581;
+$_blue-gray-700: #334E68;
+$_blue-gray-800: #243B53;
+$_blue-gray-900: #102A43;
+
+$_magenta-050: #F5E1F7;
+$_magenta-100: #ECBDF2;
+$_magenta-200: #CE80D9;
+$_magenta-300: #BB61C7;
+$_magenta-400: #AD4BB8;
+$_magenta-500: #A23DAD;
+$_magenta-600: #90279C;
+$_magenta-700: #7C1A87;
+$_magenta-800: #671270;
+$_magenta-900: #4E0754;
+
+$_teal-050: #EFFCF6;
+$_teal-100: #C6F7E2;
+$_teal-200: #8EEDC7;
+$_teal-300: #65D6AD;
+$_teal-400: #3EBD93;
+$_teal-500: #27AB83;
+$_teal-600: #199473;
+$_teal-700: #147D64;
+$_teal-800: #0C6B58;
+$_teal-900: #014D40;
+
+$_yellow-050: #FFFAEB;
+$_yellow-100: #FCEFC7;
+$_yellow-200: #F8E3A3;
+$_yellow-300: #F9DA8B;
+$_yellow-400: #F7D070;
+$_yellow-500: #E9B949;
+$_yellow-600: #C99A2E;
+$_yellow-700: #A27C1A;
+$_yellow-800: #7C5E10;
+$_yellow-900: #513C06;
+
+$_red-050: #FFEEEE;
+$_red-100: #FACDCD;
+$_red-200: #F29B9B;
+$_red-300: #E66A6A;
+$_red-400: #D64545;
+$_red-500: #BA2525;
+$_red-600: #A61B1B;
+$_red-700: #911111;
+$_red-800: #780A0A;
+$_red-900: #610404;
+
+// Theme Map
+
+$theme-map: (
+    "primary": ("050": $_purple-vivid-050,
+        "100": $_purple-vivid-100,
+        "200": $_purple-vivid-200,
+        "300": $_purple-vivid-300,
+        "400": $_purple-vivid-400,
+        "500": $_purple-vivid-500,
+        "600": $_purple-vivid-600,
+        "700": $_purple-vivid-700,
+        "800": $_purple-vivid-800,
+        "900": $_purple-vivid-900,
+    ),
+    "neutral": ("050": $_blue-gray-050,
+        "100": $_blue-gray-100,
+        "200": $_blue-gray-200,
+        "300": $_blue-gray-300,
+        "400": $_blue-gray-400,
+        "500": $_blue-gray-500,
+        "600": $_blue-gray-600,
+        "700": $_blue-gray-700,
+        "800": $_blue-gray-800,
+        "900": $_blue-gray-900,
+    ),
+    "accent": ("050": $_magenta-050,
+        "100": $_magenta-100,
+        "200": $_magenta-200,
+        "300": $_magenta-300,
+        "400": $_magenta-400,
+        "500": $_magenta-500,
+        "600": $_magenta-600,
+        "700": $_magenta-700,
+        "800": $_magenta-800,
+        "900": $_magenta-900, ),
+    "success": ("050": $_teal-050,
+        "100": $_teal-100,
+        "200": $_teal-200,
+        "300": $_teal-300,
+        "400": $_teal-400,
+        "500": $_teal-500,
+        "600": $_teal-600,
+        "700": $_teal-700,
+        "800": $_teal-800,
+        "900": $_teal-900,
+    ),
+    "warning": ("050": $_yellow-050,
+        "100": $_yellow-100,
+        "200": $_yellow-200,
+        "300": $_yellow-300,
+        "400": $_yellow-400,
+        "500": $_yellow-500,
+        "600": $_yellow-600,
+        "700": $_yellow-700,
+        "800": $_yellow-800,
+        "900": $_yellow-900,
+    ),
+    "error": ("050": $_red-050,
+        "100": $_red-100,
+        "200": $_red-200,
+        "300": $_red-300,
+        "400": $_red-400,
+        "500": $_red-500,
+        "600": $_red-600,
+        "700": $_red-700,
+        "800": $_red-800,
+        "900": $_red-900,
+    ),
+);
+
+// Properties
+
+$property-map: (
+    "bg": "background",
+    "text": "color",
+    "fill": "fill",
+);
+
+// Semantic Tokens
+
+$primary-050: var(--primary-050);
+$primary-100: var(--primary-100);
+$primary-200: var(--primary-200);
+$primary-300: var(--primary-300);
+$primary-400: var(--primary-400);
+$primary-500: var(--primary-500);
+$primary-600: var(--primary-600);
+$primary-700: var(--primary-700);
+$primary-800: var(--primary-800);
+$primary-900: var(--primary-900);
+
+$neutral-050: var(--neutral-050);
+$neutral-100: var(--neutral-100);
+$neutral-200: var(--neutral-200);
+$neutral-300: var(--neutral-300);
+$neutral-400: var(--neutral-400);
+$neutral-500: var(--neutral-500);
+$neutral-600: var(--neutral-600);
+$neutral-700: var(--neutral-700);
+$neutral-800: var(--neutral-800);
+$neutral-900: var(--neutral-900);
+
+$accent-050: var(--accent-050);
+$accent-100: var(--accent-100);
+$accent-200: var(--accent-200);
+$accent-300: var(--accent-300);
+$accent-400: var(--accent-400);
+$accent-500: var(--accent-500);
+$accent-600: var(--accent-600);
+$accent-700: var(--accent-700);
+$accent-800: var(--accent-800);
+$accent-900: var(--accent-900);
+
+$semantic-success-050: var(--semantic-success-050);
+$semantic-success-100: var(--semantic-success-100);
+$semantic-success-200: var(--semantic-success-200);
+$semantic-success-300: var(--semantic-success-300);
+$semantic-success-400: var(--semantic-success-400);
+$semantic-success-500: var(--semantic-success-500);
+$semantic-success-600: var(--semantic-success-600);
+$semantic-success-700: var(--semantic-success-700);
+$semantic-success-800: var(--semantic-success-800);
+$semantic-success-900: var(--semantic-success-900);
+
+$semantic-warning-050: var(--semantic-warning-050);
+$semantic-warning-100: var(--semantic-warning-100);
+$semantic-warning-200: var(--semantic-warning-200);
+$semantic-warning-300: var(--semantic-warning-300);
+$semantic-warning-400: var(--semantic-warning-400);
+$semantic-warning-500: var(--semantic-warning-500);
+$semantic-warning-600: var(--semantic-warning-600);
+$semantic-warning-700: var(--semantic-warning-700);
+$semantic-warning-800: var(--semantic-warning-800);
+$semantic-warning-900: var(--semantic-warning-900);
+
+$semantic-error-050: var(--semantic-error-050);
+$semantic-error-100: var(--semantic-error-100);
+$semantic-error-200: var(--semantic-error-200);
+$semantic-error-300: var(--semantic-error-300);
+$semantic-error-400: var(--semantic-error-400);
+$semantic-error-500: var(--semantic-error-500);
+$semantic-error-600: var(--semantic-error-600);
+$semantic-error-700: var(--semantic-error-700);
+$semantic-error-800: var(--semantic-error-800);
+$semantic-error-900: var(--semantic-error-900);
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Typography
+
+// Primitive Tokens
+
+$_inter: "Inter", Helvetica, sans;
+
+// Maps
+
+$font-family-map: (
+    "title": $_inter,
+    "heading": $_inter,
+    "paragraph": $_inter,
+);
+
+$font-size-map: (
+    "100": clamp(0.775rem, 0.721rem + 0.143vw, 0.85rem),
+    "200": clamp(0.85rem, 0.796rem + 0.143vw, 0.925rem),
+    "300": clamp(0.925rem, 0.871rem + 0.143vw, 1rem),
+    "400": clamp(1rem, 0.821rem + 0.476vw, 1.25rem),
+    "500": clamp(1.25rem, 1.071rem + 0.476vw, 1.5rem),
+    "600": clamp(1.5rem, 1.143rem + 0.952vw, 2rem),
+    "700": clamp(2rem, 1.821rem + 0.476vw, 2.25rem),
+    "800": clamp(2.25rem, 1.982rem + 0.714vw, 2.625rem),
+    "900": clamp(2.5rem, 2.214rem + 1.429vw, 3.5rem),
+);
+
+$font-weight-map: (
+    "100": 100,
+    "200": 200,
+    "300": 300,
+    "400": 400,
+    "500": 500,
+    "600": 600,
+    "700": 700,
+    "800": 800,
+    "900": 900,
+);
+
+$line-height-map: (
+    "100": 1.0,
+    "200": 1.1,
+    "300": 1.4,
+    "400": 1.6,
+    "600": 2.5,
+    "800": 3.5,
+);
+
+$letter-spacing-map: (
+    "100": -0.03em,
+    "200": -0.02em,
+    "400": 0em,
+    "600": 0.02em,
+    "700": 0.03em,
+);
+
+// Lists
+
+$font-style-list: "normal", "italic", "oblique";
+$text-transform-list: "capitalize", "uppercase", "lowercase";
+$text-align-list: "start", "end", "center", "justify";
+$text-wrap-list: "wrap", "nowrap", "balance", "pretty", "stable";
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Sizes
+
+// Maps
+
+$size-map: (
+    "auto": auto,
+    "none": none,
+    0: 0em,
+    4: 0.25em,
+    8: 0.5em,
+    12: 0.75em,
+    16: 1.0em,
+    20: 1.25em,
+    24: 1.5em,
+    28: 1.75em,
+    32: 2.0em,
+    36: 2.25em,
+    40: 2.5em,
+    44: 2.75em,
+    48: 3.0em,
+    52: 3.25em,
+    56: 3.5em,
+    60: 3.75em,
+    64: 4.0em,
+);
+
+// Lists
+
+$property-list: "margin", "padding";
+$modifier-list: "block", "block-start", "block-end", "inline", "inline-start", "inline-end", "top", "left", "right", "bottom";
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Layout
+
+// Maps
+
+$grid-map: (
+    "place-content": ("content-start": start,
+        "content-center": center,
+        "content-end": end,
+    ),
+    "place-items": ("items-start": start,
+        "items-center": center,
+        "items-end": end,
+    ),
+);
+
+$flex-map: (
+    "flex-direction": ("col": column,
+        "row": row,
+        "col-reverse": column-reverse,
+        "row-reverse": row-reverse,
+    ),
+    "align-items": ("align-start": start,
+        "align-center": center,
+        "align-end": end,
+    ),
+    "justify-content": ("justify-start": start,
+        "justify-center": center,
+        "justify-end": end,
+    ),
+);
+
+$flow-map: (
+    "margin-top": ("vertical": "var(--_gap)"),
+    "margin-left": ("horizontal": "var(--_gap)"),
+);
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Tokens
+
+// Semantic Tokens
+
+$bg-default: $neutral-800;
+$bg-inverse: $neutral-100;
+
+$text-default: $neutral-050;
+$text-inverse: $neutral-900;
+
+$icon-default: $accent-400;
+$icon-inverse: $accent-900;
+
+$fs-heading: var(--font-size-800);
+$fs-subheading: var(--font-size-600);
+$fs-paragraph: var(--font-size-400);
+$fs-small: var(--font-size-200);
+
+$fw-light: var(--font-weight-200);
+$fw-default: var(--font-weight-400);
+$fw-bold: var(--font-weight-700);
+
+$gap-none: 0;
+$gap-xs: var(--size-4);
+$gap-sm: var(--size-8);
+$gap-md: var(--size-16);
+$gap-lg: var(--size-32);
+$gap-xl: var(--size-64);
+$gap-auto: auto;
+
+$padding-none: $gap-none;
+$padding-xs: $gap-xs;
+$padding-sm: $gap-sm;
+$padding-md: $gap-md;
+$padding-lg: $gap-lg;
+$padding-xl: $gap-xl;
+$padding-auto: $gap-auto;
+
+$margin-none: $gap-none;
+$margin-xs: $gap-xs;
+$margin-sm: $gap-sm;
+$margin-md: $gap-md;
+$margin-lg: $gap-lg;
+$margin-xl: $gap-xl;
+$margin-auto: $gap-auto;
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #endregion
+
+// ======================================== //
+
+// #region Base
+
+// ---------------------------------------- //
+
+// #region Render
+
+@media (prefers-reduced-motion: reduce) {
+
+    html,
+    html:focus-within {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Reset
+
+:where(*,
+    *::before,
+    *::after) {
+    box-sizing: border-box;
+    padding: $padding-none;
+    margin: $margin-none;
+
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:where(html) {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+:where(body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd) {
+    margin-block-end: $margin-none;
+}
+
+:where(ul[role='list'],
+    ol[role='list']) {
+    list-style: none;
+}
+
+:where(body) {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+:where(h1,
+    h2,
+    h3,
+    h4,
+    button,
+    input,
+    label) {
+    line-height: 1.1;
+}
+
+:where(h1,
+    h2,
+    h3,
+    h4) {
+    text-wrap: balance;
+}
+
+:where(a:not([class])) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+:where(img,
+    picture) {
+    max-width: 100%;
+    display: block;
+}
+
+:where(input,
+    button,
+    textarea,
+    select) {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+:where(textarea:not([rows])) {
+    min-height: 10em;
+}
+
+:where(:target) {
+    scroll-margin-block: 5ex;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Root
+
+:root {
+
+    // Generate Color Variables
+    @each $color, $shade-map in $theme-map {
+        @each $shade, $value in $shade-map {
+            --#{$color}-#{$shade}: #{$value};
+        }
+    }
+
+    // Generate Font Family Variables
+    // @each $family, $value in $font-family-map {
+    //     --font-family-#{$family}: #{$value};
+    // }
+
+    // Generate Font Size Variables
+    @each $size, $value in $font-size-map {
+        --font-size-#{$size}: #{$value};
+    }
+
+    // Generate Font Weight Variables
+    @each $weight, $value in $font-weight-map {
+        --font-weight-#{$weight}: #{$value};
+    }
+
+    // Generate Line Height Variables
+    @each $size, $value in $line-height-map {
+        --line-height-#{$size}: #{$value};
+    }
+
+    // Generate Letter Spacing Variables
+    @each $size, $value in $letter-spacing-map {
+        --letter-spacing-#{$size}: #{$value};
+    }
+
+    // Generate Spacing Variables
+    @each $size, $value in $size-map {
+        --size-#{$size}: #{$value};
+        --gap-#{$size}: #{$value};
+        --margin-#{$size}: #{$value};
+        --padding-#{$size}: #{$value};
+    }
+
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region General
+
+:where(body) {
+    --gap: #{$gap-none};
+
+    background: $neutral-200;
+    color: $text-default;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #endregion
+
+// ======================================== //
+
+// #region Components
+
+// ---------------------------------------- //
+
+// #region GameWindow
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region TopBar
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Board
+
+.board {
+    --gap: #{$gap-none};
+
+    grid-template-rows: min-content 1fr;
+}
+
+.board > div:first-child {
+    --gap: #{$gap-sm};
+    background: $neutral-900;
+
+    width: 100%;
+    height: max-content;
+    min-height: 5.25rem;
+
+    padding-block: $padding-sm;
+    padding-inline: $padding-md;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Deck
+
+// NOTE: This segment is used to test styles before integrating them directly into the Deck Web Component.
+
+.deck {
+    --gap: #{$gap-md};
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+}
+
+.stock {
+    --gap: #{$gap-none};
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    min-width: 3rem;
+    aspect-ratio: 2.5 / 3.5;
+
+    border-radius: 4px;
+
+    outline: 2px solid $neutral-600;
+    outline-offset: -2px;
+
+    position: relative;
+}
+
+.stock > * {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.talon {
+    --gap: #{$gap-none};
+    grid-template-columns: repeat(3, 1rem);
+    grid-template-rows: 1fr;
+
+    min-width: 3rem;
+    aspect-ratio: 2.5 / 3.5;
+
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.foundations {
+    --gap: #{$gap-sm};
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.foundations__list {
+    --gap: #{$gap-none};
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    min-width: 3rem;
+    aspect-ratio: 2.5 / 3.5;
+
+    border-radius: 4px;
+
+    outline: 2px solid $neutral-600;
+    outline-offset: -2px;
+
+    position: relative;
+}
+
+.foundations__list#hearts::before,
+.foundations__list#diamonds::before,
+.foundations__list#clubs::before,
+.foundations__list#spades::before {
+    display: grid;
+    place-content: center;
+
+    font-size: 2rem;
+    color: $neutral-600;
+
+    position: absolute;
+    inset: 0 0;
+}
+
+.foundations__list#hearts::before {
+    content: '♥';
+}
+
+.foundations__list#diamonds::before {
+    content: '♦';
+}
+
+.foundations__list#clubs::before {
+    content: '♣';
+}
+
+.foundations__list#spades::before {
+    content: '♠';
+}
+
+.foundations__list > * {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.tableau {
+    --gap: 0;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(auto-fill, 1.5rem);
+
+    padding-block: $padding-sm;
+    padding-inline: $padding-md;
+
+    justify-items: center;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Card
+
+// NOTE: This segment is used to test styles before integrating them directly into the Card Web Component.
+
+.card {
+    display: block;
+
+    background: $neutral-050;
+    color: $text-inverse;
+
+    min-width: 3rem;
+    aspect-ratio: 2.5 / 3.5;
+
+    border: 2px solid black;
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.card[data-face="down"] {}
+
+.card[data-face="up"] {}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.card::before {}
+
+.card::after {}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region SideBar
+
+.sidebar {
+    --gap: #{$gap-xl};
+}
+
+.sidebar__control {
+    --gap: #{$gap-md};
+
+    width: max-content;
+
+    background: transparent;
+    color: $text-default;
+
+    padding-block: $padding-md;
+    padding-inline: $padding-sm;
+
+    border: none;
+
+    &:is(:hover, :focus) {
+        cursor: pointer;
+    }
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #endregion
+
+// ======================================== //
+
+// #region Utilities
+
+// ---------------------------------------- //
+
+// #region Accessibility
+
+:where(.visually-hidden) {
+    width: 1px !important;
+    height: 1px !important;
+
+    padding: 0 !important;
+    margin: -1px !important;
+
+    border: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
+
+    white-space: nowrap !important;
+
+    position: absolute !important;
+
+    overflow: hidden !important;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Colors
+
+@each $color, $shade-map in $theme-map {
+    @each $shade, $value in $shade-map {
+        @each $name, $property in $property-map {
+            .#{$name}-#{$color}-#{$shade} {
+                #{$property}: var(--#{$color}-#{$shade});
+            }
+        }
+    }
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Typography
+
+@each $family, $value in $font-family-map {
+    .ff-#{$family} {
+        font-family: #{$value};
+    }
+}
+
+@each $size, $value in $font-size-map {
+    .fs-#{$size} {
+        font-size: #{$value};
+    }
+}
+
+@each $weight, $value in $font-weight-map {
+    .fw-#{$weight} {
+        font-weight: #{$value};
+    }
+}
+
+@each $height, $value in $line-height-map {
+    .lh-#{$height} {
+        line-height: #{$value};
+    }
+}
+
+@each $spacing, $value in $letter-spacing-map {
+    .ls-#{$spacing} {
+        letter-spacing: #{$value};
+    }
+}
+
+@each $style in $font-style-list {
+    .fs-#{$style} {
+        font-style: #{$style};
+    }
+}
+
+@each $transform in $text-transform-list {
+    .tt-#{$transform} {
+        text-transform: #{$transform};
+    }
+}
+
+@each $align in $text-align-list {
+    .ta-#{$align} {
+        text-align: #{$align};
+    }
+}
+
+@each $wrap in $text-wrap-list {
+    .tw-#{$wrap} {
+        text-wrap: #{$wrap};
+    }
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Spacing
+
+@each $size, $value in $size-map {
+    @each $property in $property-list {
+
+        .#{$property}-#{$size} {
+            #{$property}: #{$value};
+        }
+
+        @each $modifier in $modifier-list {
+            .#{$property}-#{$modifier}-#{$size} {
+                #{$property}-#{$modifier}: #{$value};
+            }
+        }
+    }
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Layout
+
+:where([class*="grid"]) {
+    --_gap: var(--gap, 1em);
+
+    display: grid;
+    gap: var(--_gap);
+}
+
+@each $property, $modifier-map in $grid-map {
+    @each $modifier, $value in $modifier-map {
+        :where([class*="grid"][class*="--#{$modifier}"]) {
+            #{$property}: #{$value};
+        }
+    }
+}
+
+:where([class*="flex"]) {
+    --_gap: var(--gap, 1em);
+
+    display: flex;
+    column-gap: var(--_gap);
+    row-gap: calc(var(--_gap) / 2);
+}
+
+@each $property, $modifier-map in $flex-map {
+    @each $modifier, $value in $modifier-map {
+        :where([class*="flex"][class*="--#{$modifier}"]) {
+            #{$property}: #{$value};
+        }
+    }
+}
+
+:where([class*="flow"]) {
+    --_gap: var(--gap, 1em);
+}
+
+:where([class*="flow"] > *:where(:not(:first-child))) {
+    --_gap: var(--gap, 1em);
+}
+
+@each $property, $modifier-map in $flow-map {
+    @each $modifier, $value in $modifier-map {
+        :where([class*="flow"][class*="--#{$modifier}"] > *:where(:not(:first-child))) {
+            #{$property}: #{$value};
+        }
+    }
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #endregion
+
+// ======================================== //
+
+// #region Vendor
+
+// ---------------------------------------- //
+
+// #region Fonts
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Icons
+
+// TODO: Import required style updates so Icons align vertically as expected.
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #endregion
+
+// ======================================== //
