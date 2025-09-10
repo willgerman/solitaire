@@ -12,7 +12,6 @@ template.innerHTML = `
     
     <div id=""
          class="tableau__list grid">
-
     </div>
 `;
 

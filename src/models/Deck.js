@@ -6,6 +6,8 @@ import Card from './Card';
 
 export default class Deck extends HTMLElement {
     constructor(name) {
+        super();
+
         this.id = Slugify(name);
         this.cards = [];
     }
@@ -19,13 +21,10 @@ export default class Deck extends HTMLElement {
     }
 
     initialize() {
-        const DOMObject = this.getDOMObject();
-
         suits.forEach((suit) => {
             ranks.forEach((rank) => {
                 const card = new Card(suit, rank);
                 this.cards.push(card);
-                DOMObject.append(card.createDOMObject());
             });
         });
     }
@@ -82,3 +81,5 @@ export default class Deck extends HTMLElement {
         return drawnCards;
     }
 }
+
+customElements.define("wg-deck", Deck);

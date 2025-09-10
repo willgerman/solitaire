@@ -1,6 +1,7 @@
+import GameService from "../services/GameService";
+
+// NOTE: This connects the interface to the Game Engine.
+
 export default class GameController {
     constructor() { }
-
-    // read in user requests and interface with the GameService to perform actions and respond accordingly.
-
 }

@@ -11,7 +11,6 @@ template.innerHTML = `
     ${style}
     <div id="stock"
         class="stock grid">
-
     </div>
 `;
 

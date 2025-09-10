@@ -12,7 +12,6 @@ template.innerHTML = `
     
     <div id=""
          class="foundations__list grid">
-
     </div>
 `;
 

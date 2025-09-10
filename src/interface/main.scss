@@ -371,8 +371,8 @@ $flow-map: (
 
 // Semantic Tokens
 
-$bg-default: $neutral-800;
-$bg-inverse: $neutral-100;
+$bg-default: $neutral-900;
+$bg-inverse: $neutral-050;
 
 $text-default: $neutral-050;
 $text-inverse: $neutral-900;
@@ -596,7 +596,7 @@ $margin-auto: $gap-auto;
 :where(body) {
     --gap: #{$gap-none};
 
-    background: $neutral-200;
+    background: $bg-default;
     color: $text-default;
 }
 
@@ -614,11 +614,41 @@ $margin-auto: $gap-auto;
 
 // #region GameWindow
 
+.solitaire {
+    --gap: #{$gap-none};
+
+    grid-template-rows: max-content 1fr max-content;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
 // #endregion
 
 // ---------------------------------------- //
 
 // #region TopBar
+
+.topbar {
+    --gap: #{$gap-xl};
+
+    background: #222222;
+}
+
+.topbar__item {
+    --gap: #{$gap-md};
+
+    padding-block: $padding-md;
+    padding-inline: $padding-sm;
+
+    & > *:first-child {
+        opacity: 50%;
+    }
+
+    & > *:last-child {
+        font-weight: $fw-bold;
+    }
+}
 
 // #endregion
 
@@ -628,8 +658,9 @@ $margin-auto: $gap-auto;
 
 .board {
     --gap: #{$gap-none};
-
     grid-template-rows: min-content 1fr;
+
+    background: $neutral-800;
 }
 
 .board > div:first-child {
@@ -640,11 +671,24 @@ $margin-auto: $gap-auto;
     height: max-content;
     min-height: 5.25rem;
 
-    padding-block: $padding-sm;
+    padding-block: $padding-md;
     padding-inline: $padding-md;
 
     align-items: center;
     justify-content: space-between;
+}
+
+// #endregion
+
+// ---------------------------------------- //
+
+// #region Tableau
+
+.tableau {
+    --gap: #{$gap-none};
+
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-rows: repeat(7, minmax(0, 1fr));
 }
 
 // #endregion
@@ -771,37 +815,100 @@ $margin-auto: $gap-auto;
 // NOTE: This segment is used to test styles before integrating them directly into the Card Web Component.
 
 .card {
-    display: block;
+    --_grid-area: var(--card-grid-area, initial);
+    grid-area: var(--_grid-area);
 
-    background: $neutral-050;
-    color: $text-inverse;
-
-    min-width: 3rem;
+    width: 3rem;
     aspect-ratio: 2.5 / 3.5;
 
-    border: 2px solid black;
+    border: 2px solid var(--neutral-900);
     border-radius: 4px;
+
+    perspective: 1000px;
+}
+
+.card[data-face="up"] > .card__content {
+    transform: rotateY(0deg);
+}
+
+.card[data-face="down"] > .card__content {
+    transform: rotateY(180deg);
+}
+
+.card__content {
+    width: 100%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
 
     position: relative;
 }
 
-.card[data-face="down"] {}
-
-.card[data-face="up"] {}
-
-.card::before,
-.card::after {
-    content: '';
+.card__front,
+.card__back {
     position: absolute;
-    inset: 0 0;
 
     width: 100%;
     height: 100%;
+
+    border-radius: inherit;
+
+    backface-visibility: hidden;
 }
 
-.card::before {}
+.card__front {
+    --gap: 0;
+    display: grid;
+    grid-template-rows: max-content, 1fr;
+    gap: var(--gap);
 
-.card::after {}
+    background: var(--neutral-050);
+    color: var(--neutral-900);
+
+    padding: calc(var(--size-4) / 2);
+}
+
+.card__front > * {
+    user-select: none;
+}
+
+.card__front > div:first-child {
+    --gap: 0;
+    display: flex;
+    gap: var(--gap);
+    justify-content: space-between;
+
+    padding-inline: calc(var(--size-4) / 2);
+}
+
+.card__front > div:first-child > span {
+    --rank-text-color: inherit;
+    color: var(--rank-text-color);
+    font-weight: var(--font-weight-700);
+}
+
+.card__front > div:first-child > i {
+    transform: scale(0.85);
+    font-style: normal;
+}
+
+.card__front > :last-child {
+    width: max-content;
+    margin-inline: auto;
+
+    font-style: normal;
+
+    transform: scale(1.5) translateY(5%);
+}
+
+.card__back {
+    background-color: var(--accent-400);
+
+    transform: rotateY(180deg);
+}
 
 // #endregion
 
@@ -811,6 +918,7 @@ $margin-auto: $gap-auto;
 
 .sidebar {
     --gap: #{$gap-xl};
+    background: $neutral-800;
 }
 
 .sidebar__control {
@@ -1032,7 +1140,16 @@ $margin-auto: $gap-auto;
 
 // #region Icons
 
-// TODO: Import required style updates so Icons align vertically as expected.
+.fa,
+.fa-brands,
+.fa-classic,
+.fa-regular,
+.fa-solid,
+.fab,
+.far,
+.fas {
+    line-height: unset !important;
+}
 
 // #endregion
 
